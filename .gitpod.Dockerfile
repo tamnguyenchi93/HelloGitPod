@@ -2,7 +2,7 @@ FROM ubuntu:18.04
 
 ARG ZSDK_VERSION=0.11.2
 ARG CMAKE_VERSION=3.16.2
-ARG RENODE_VERSION=1.8.2
+ARG RENODE_VERSION=1.11.0
 ARG DTS_VERSION=1.4.7
 
 ARG UID=10000
@@ -75,10 +75,8 @@ RUN dpkg --add-architecture i386 && \
         patchutils \
         bc \
         zlib1g-dev \
-        libexpat-dev && \
-        #vim && \
-        wget -O dtc.deb http://security.ubuntu.com/ubuntu/pool/main/d/device-tree-compiler/device-tree-compiler_${DTS_VERSION}-3_amd64.deb && \
-        dpkg -i dtc.deb && \
+        libexpat-dev \
+		device-tree-compiler && \
         wget -O renode.deb https://github.com/renode/renode/releases/download/v${RENODE_VERSION}/renode_${RENODE_VERSION}_amd64.deb && \
         apt install -y ./renode.deb && \
         rm dtc.deb renode.deb && \
@@ -146,5 +144,14 @@ ENV PKG_CONFIG_PATH=/usr/lib/i386-linux-gnu/pkgconfig
 ENV DISPLAY=:0
 
 RUN chown -R user:user /home/user
-#
-# More information: https://www.gitpod.io/docs/config-docker/
+
+#ADD ./entrypoint.sh /home/user/entrypoint.sh
+#RUN dos2unix /home/user/entrypoint.sh
+#EXPOSE 5900
+#ENTRYPOINT ["/home/user/entrypoint.sh"]
+#CMD ["/bin/bash"]
+#USER user
+#WORKDIR /workspace
+#VOLUME ["/workspace"]
+#ARG VNCPASSWD=123456
+#RUN mkdir ~/.vnc && x11vnc -storepasswd ${VNCPASSWD} ~/.vnc/passwd
