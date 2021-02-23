@@ -1,4 +1,4 @@
-image: gitpod/workspace-full-vnc
+image: consol/ubuntu-icewm-vnc
 
 # List the ports you want to expose and what to do when they are served. See https://www.gitpod.io/docs/config-ports/
 ports:
