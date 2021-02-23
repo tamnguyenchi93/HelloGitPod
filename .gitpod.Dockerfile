@@ -79,7 +79,7 @@ RUN dpkg --add-architecture i386 && \
 		device-tree-compiler && \
         wget -O renode.deb https://github.com/renode/renode/releases/download/v${RENODE_VERSION}/renode_${RENODE_VERSION}_amd64.deb && \
         apt install -y ./renode.deb && \
-        rm dtc.deb renode.deb && \
+        rm -rf dtc.deb renode.deb && \
         rm -rf /var/lib/apt/lists/*
 
 RUN locale-gen en_US.UTF-8
