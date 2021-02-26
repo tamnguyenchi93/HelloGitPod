@@ -10,3 +10,9 @@ ports:
 tasks:
   - init: echo 'init script' # runs during prebuild
     command: echo 'start script'
+vscode:
+  extensions:
+    - ms-vscode.cpptools
+    - eamodio.gitlens
+    - coenraads.bracket-pair-colorizer
+    - mhutchie.git-graph
