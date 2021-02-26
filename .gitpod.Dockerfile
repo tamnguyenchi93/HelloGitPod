@@ -1,3 +1,4 @@
+FROM gitpod/workspace-full-vnc
 USER gitpod
 
 ENV PIP_USER=false
