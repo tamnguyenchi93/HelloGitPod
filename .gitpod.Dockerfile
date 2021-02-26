@@ -1,7 +1,6 @@
-FROM gitpod/workspace-full-vnc
+USER gitpod
 
-
-USER root
-RUN useradd -m tamnc && echo "tamnc:1234" | chpasswd && adduser tamnc sudo
-
-USER tamnc
+ENV PIP_USER=false
+ENV PLATFORMIO_PENV_DIR=/home/gitpod/.platformio
+ENV PATH="${PLATFORMIO_PENV_DIR}/bin:${PATH}"
+RUN python3 -c "$(curl -fsSL https://raw.githubusercontent.com/platformio/platformio/master/scripts/get-platformio.py)"
